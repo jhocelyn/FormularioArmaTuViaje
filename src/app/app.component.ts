@@ -18,11 +18,8 @@ export class AppComponent {
       name: [''],
       email: [''],
       phone: [''],
-      message: [''],
       npersonas: [''],
-      destino: [''],
-      fecha_inicio: [''],
-      fecha_fin: ['']
+      fecha: ['']
     });
   }
 

@@ -1,61 +1,76 @@
-<div class="flex w-full p-2 justify-center">
-    <div class="flex items-center gap-4">
-      <img src="assets/arma_tuviaje_logo.png" alt="">
-      <div class="text-2xl font-semibold gap-1">
-      <span class="text-[#373435]">ARMA</span><span class="text-[#727376]">tu</span><span class="text-[#9c3133]">Viaje</span>
-      </div>
-    </div>
-  <div>
+<!-- Hero Section -->
+<div class="relative w-full h-[500px] flex items-center justify-center text-center text-white bg-cover bg-center" style="background-image: url('assets/Punta-cana-hero.jpg');">
+  <div class="bg-black/50 absolute inset-0"></div>
+  <div class="relative z-10">
+    <h1 class="text-4xl font-bold">¡Vive Punta Cana! 🏝️</h1>
+    <p class="text-lg mt-2">5 Días / 4 Noches | Todo Incluido | Desde <span class="font-bold">$995</span></p>
+    <p class="text-sm italic">Salidas: 02 al 06 de marzo, 06 al 10 de marzo, etc.</p>
+    <a href="#formulario" class="mt-4 inline-block bg-[#b21a1f] px-6 py-3 rounded-lg text-lg font-semibold hover:bg-red-700 transition">Reserva Ahora</a>
   </div>
 </div>
-<div class="bg-[#b21a1f] mx-auto flex flex-col items-center py-6">
-  <h1 class="text-3xl text-white font-bold text-center">Dejanos tus datos</h1>
-  <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" class="w-xs md:w-2xl rounded-sm mt-6 bg-white p-6 shadow-md">
+
+<!-- Beneficios -->
+<div class="container mx-auto py-12 px-6">
+  <h2 class="text-3xl font-bold text-center text-gray-800">¿Qué incluye este viaje?</h2>
+  <div class="grid md:grid-cols-3 gap-6 mt-8 text-center">
+    <div class="p-4 bg-gray-100 rounded-lg">
+      <img src="assets/flight-icon.jpg" alt="" class="mx-auto w-12">
+      <h3 class="text-lg font-semibold mt-2">Vuelos ida y vuelta</h3>
+    </div>
+    <div class="p-4 bg-gray-100 rounded-lg">
+      <img src="assets/hotel-icon.png" alt="" class="mx-auto w-12">
+      <h3 class="text-lg font-semibold mt-2">Hotel 4 noches</h3>
+    </div>
+    <div class="p-4 bg-gray-100 rounded-lg">
+      <img src="assets/food-icon.png" alt="" class="mx-auto w-12">
+      <h3 class="text-lg font-semibold mt-2">Sistema de alimentación todo Incluido 🍹</h3>
+    </div>
+    <div class="p-4 bg-gray-100 rounded-lg">
+      <img src="assets/secure-icon.png" alt="" class="mx-auto w-12">
+      <h3 class="text-lg font-semibold mt-2">Seguro Incluido</h3>
+    </div>
+  </div>
+</div>
+
+<!-- Formulario -->
+<div id="formulario" class="bg-[#b21a1f] mx-auto flex flex-col items-center py-8">
+  <h2 class="text-3xl text-white font-bold text-center">¡Reserva tu cupo ahora!</h2>
+  <p class="text-white text-center mt-2">Completa tus datos y un asesor te contactará.</p>
+  <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" class="w-full max-w-lg bg-white p-6 mt-6 rounded-lg shadow-lg">
+
     <div class="mb-4">
-      <label class="block text-gray-700">Nombre</label>
-      <input type="text" formControlName="name" class="w-full p-2 border rounded">
+      <label class="block text-gray-700 font-medium">Nombre</label>
+      <input type="text" formControlName="name" class="w-full p-3 border rounded-lg">
     </div>
 
     <div class="mb-4">
-      <label class="block text-gray-700">Correo Electrónico</label>
-      <input type="email" formControlName="email" class="w-full p-2 border rounded">
+      <label class="block text-gray-700 font-medium">Correo Electrónico</label>
+      <input type="email" formControlName="email" class="w-full p-3 border rounded-lg">
     </div>
 
     <div class="mb-4">
-      <label class="block text-gray-700">Teléfono</label>
-      <input type="tel" formControlName="phone" class="w-full p-2 border rounded">
+      <label class="block text-gray-700 font-medium">Teléfono</label>
+      <input type="tel" formControlName="phone" class="w-full p-3 border rounded-lg">
     </div>
 
     <div class="mb-4">
-      <label class="block text-gray-700">Mensaje</label>
-      <textarea formControlName="message" class="w-full p-2 border rounded"></textarea>
+      <label class="block text-gray-700 font-medium">Fecha de Salida</label>
+      <select formControlName="fecha" class="w-full p-3 border rounded-lg">
+        <option>02 AL 06 DE MARZO</option>
+        <option>06 AL 10 DE MARZO</option>
+        <option>14 AL 18 DE MARZO</option>
+        <option>30 DE MARZO AL 03 DE ABRIL</option>
+        <option>06 AL 10 DE ABRIL</option>
+      </select>
     </div>
 
-    <div class="mb-4">
-      <label class="block text-gray-700">Número de Personas</label>
-      <input type="number" formControlName="npersonas" class="w-full p-2 border rounded">
-    </div>
-
-    <div class="mb-4">
-      <label class="block text-gray-700">Destino</label>
-      <input type="text" formControlName="destino" class="w-full p-2 border rounded">
-    </div>
-
-    <div class="mb-4">
-      <label class="block text-gray-700">Fecha de Inicio</label>
-      <input type="date" formControlName="fecha_inicio" class="w-full p-2 border rounded">
-    </div>
-
-    <div class="mb-4">
-      <label class="block text-gray-700">Fecha de Fin</label>
-      <input type="date" formControlName="fecha_fin" class="w-full p-2 border rounded">
-    </div>
-
-    <button type="submit" class="w-full bg-[#b21a1f] text-white py-2 rounded hover:bg-red-700">
-      Enviar
+    <button type="submit" class="w-full bg-[#b21a1f] text-white py-3 rounded-lg font-semibold hover:bg-red-700 transition">
+      ¡Quiero mi viaje!
     </button>
   </form>
 </div>
+
+
 
 <footer class="bg-red-800 text-white py-6 ">
   <div class="container mx-auto px-6 flex flex-col md:flex-row justify-between items-center">
