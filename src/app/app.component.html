@@ -1,11 +1,26 @@
-<!-- Hero Section -->
-<div class="relative w-full h-[500px] flex items-center justify-center text-center text-white bg-cover bg-center" style="background-image: url('assets/Punta-cana-hero.webp');">
+<!-- Hero Section Mejorado -->
+<div class="relative w-full h-[500px] flex items-center justify-center text-center text-white bg-black">
+  <!-- Imagen optimizada -->
+  <img
+    src="assets/Punta-cana-hero.webp"
+    srcset="assets/Punta-cana-hero.webp 480w, assets/Punta-cana-hero.webp 768w, assets/Punta-cana-hero.webp 1200w"
+    sizes="(max-width: 768px) 100vw, 1200px"
+    alt="Vista de Punta Cana con playa y mar"
+    class="absolute inset-0 w-full h-full object-cover"
+    loading="lazy"
+  />
+
+  <!-- Capa de oscurecimiento -->
   <div class="bg-black/50 absolute inset-0"></div>
-  <div class="relative z-10">
+
+  <!-- Contenido -->
+  <div class="relative z-10 px-6">
     <h1 class="text-4xl font-bold">¡Vive Punta Cana! 🏝️</h1>
     <p class="text-lg mt-2">5 Días / 4 Noches | Todo Incluido | Desde <span class="font-bold">$995</span></p>
     <p class="text-sm italic">Salidas: 02 al 06 de marzo, 06 al 10 de marzo, etc.</p>
-    <a href="#formulario" class="mt-4 inline-block bg-[#b21a1f] px-6 py-3 rounded-lg text-lg font-semibold hover:bg-red-700 transition">Reserva Ahora</a>
+    <a href="#formulario" class="mt-4 inline-block bg-[#b21a1f] px-6 py-3 rounded-lg text-lg font-semibold hover:bg-red-700 transition">
+      Reserva Ahora
+    </a>
   </div>
 </div>
 
