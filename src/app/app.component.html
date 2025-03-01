@@ -27,9 +27,9 @@
 <!-- Beneficios -->
 <div class="container mx-auto py-12 px-6">
   <h2 class="text-3xl font-bold text-center text-gray-800">¿Qué incluye este viaje?</h2>
-  <div class="grid md:grid-cols-3 gap-6 mt-8 text-center">
+  <div class="grid md:grid-cols-2 gap-6 mt-8 text-center">
     <div class="p-4 bg-gray-100 rounded-lg">
-      <img src="assets/flight-icon.jpg" alt="" class="mx-auto w-12">
+      <img src="assets/flight-icon.png" alt="" class="mx-auto w-12">
       <h3 class="text-lg font-semibold mt-2">Vuelos ida y vuelta</h3>
     </div>
     <div class="p-4 bg-gray-100 rounded-lg">
@@ -46,6 +46,35 @@
     </div>
   </div>
 </div>
+
+
+<!-- Hero Slider -->
+<div class="relative overflow-hidden w-full">
+  <!-- Contenedor del carrusel -->
+  <div
+    #carouselTrack
+    class="flex transition-transform duration-500 ease-in-out"
+    [ngStyle]="{
+      'transform': 'translateX(' + translateX + 'px)',
+      'transition': transitionEnabled ? 'transform 0.5s ease-in-out' : 'none'
+    }">
+
+    <div *ngFor="let img of duplicateImages" class="h-[50vh] flex-none" [style.width.px]="img.width">
+      <img [src]="img.src" [alt]="img.alt" class="w-full h-full object-cover" />
+    </div>
+  </div>
+
+  <!-- Botón izquierdo -->
+  <button (click)="prev()" class="absolute left-2 top-1/2 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full">
+    &#10094;
+  </button>
+
+  <!-- Botón derecho -->
+  <button (click)="next()" class="absolute right-2 top-1/2 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full">
+    &#10095;
+  </button>
+</div>
+
 
 <!-- FORMULARIO O MENSAJE DE AGRADECIMIENTO -->
 <div *ngIf="!formSubmitted; else gracias" id="formulario" class="bg-[#b21a1f] mx-auto flex flex-col items-center py-8">
@@ -113,12 +142,12 @@
 
 
 
-<footer class="bg-red-800 text-white py-6 ">
+<footer class="bg-white text-red-800 py-6 ">
   <div class="container mx-auto px-6 flex flex-col md:flex-row justify-between items-center">
 
     <!-- Logo y descripción -->
     <div class="mb-4 md:mb-0">
-      <h2 class="text-2xl font-bold">ARMA TU VIAJE</h2>
+      <img src="assets/arma-tuviaje_logo.png" class="w-[150px]" alt="">
       <p class="text-gray-400 text-sm">Tu mejor opción para reservar viajes inolvidables.</p>
     </div>
 
@@ -149,6 +178,6 @@
 
   <!-- Línea divisoria y derechos reservados -->
   <div class="border-t border-gray-700 mt-6 pt-4 text-center text-gray-500 text-sm">
-    &copy; 2025 LandingForms. Todos los derechos reservados.
+    &copy; 2025 ArmaTuViaje. Todos los derechos reservados.
   </div>
 </footer>
