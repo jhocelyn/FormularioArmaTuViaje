@@ -1,25 +1,26 @@
 import { Component } from '@angular/core';
-import {FormBuilder, FormGroup, ReactiveFormsModule} from '@angular/forms';
+import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
 import {HttpClient} from '@angular/common/http';
+import {NgClass, NgIf} from '@angular/common';
 
 @Component({
   selector: 'app-root',
-  imports: [ ReactiveFormsModule],
+  imports: [ReactiveFormsModule, NgClass, NgIf],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
 export class AppComponent {
   title = 'LandingForms';
   contactForm: FormGroup;
-  private scriptUrl = "https://script.google.com/macros/s/AKfycbxXyx4dOsrhagg_ZEZdY457VKBxpn4XJa7ed47k0kf_LNV0v5F5Vr3IR3Y93wWKcviObQ/exec"; // Reemplaza con la URL de tu script de Google Apps Script
+  private scriptUrl = "https://script.google.com/macros/s/AKfycbwAo0wqHVv5XfA0xDKJB4eYXvmAWv80TCuzYd-0GSno3eg5F3IT7CllPPjC-CMZU87A/exec"; // Reemplaza con la URL de tu script de Google Apps Script
 
   constructor(private fb: FormBuilder, private http: HttpClient) {
     this.contactForm = this.fb.group({
-      name: [''],
-      email: [''],
-      phone: [''],
-      npersonas: [''],
-      fecha: ['']
+      name: ['',[Validators.required,Validators.minLength(3)]],
+      email: ['',[Validators.required,Validators.email]],
+      phone: ['',[Validators.required,Validators.pattern('^[0-9]{9,10}$')]],
+      npersonas: ['',[Validators.required,Validators.min(1)]],
+      fecha: ['',[Validators.required]]
     });
   }
 
@@ -57,5 +58,9 @@ export class AppComponent {
     else {
       alert("Por favor, completa todos los campos.");
     }
+  }
+  campoInvalido(campo: string): boolean {
+    const control = this.contactForm.get(campo);
+    return !!(control && control.invalid && control.touched);
   }
 }

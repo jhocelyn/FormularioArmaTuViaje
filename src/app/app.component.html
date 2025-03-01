@@ -53,35 +53,65 @@
   <p class="text-white text-center mt-2">Completa tus datos y un asesor te contactará.</p>
   <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" class="w-full max-w-lg bg-white p-6 mt-6 rounded-lg shadow-lg">
 
+    <!-- Nombre -->
     <div class="mb-4">
       <label class="block text-gray-700 font-medium">Nombre</label>
-      <input type="text" formControlName="name" class="w-full p-3 border rounded-lg">
+      <input type="text" formControlName="name"
+             class="w-full p-3 border rounded-lg"
+             [ngClass]="{'border-red-500': campoInvalido('name')}">
+      <small class="text-red-500" *ngIf="campoInvalido('name')">El nombre es obligatorio (mín. 3 caracteres).</small>
     </div>
 
+    <!-- Email -->
     <div class="mb-4">
       <label class="block text-gray-700 font-medium">Correo Electrónico</label>
-      <input type="email" formControlName="email" class="w-full p-3 border rounded-lg">
+      <input type="email" formControlName="email"
+             class="w-full p-3 border rounded-lg"
+             [ngClass]="{'border-red-500': campoInvalido('email')}">
+      <small class="text-red-500" *ngIf="campoInvalido('email')">Ingrese un correo válido.</small>
     </div>
 
+    <!-- Teléfono -->
     <div class="mb-4">
       <label class="block text-gray-700 font-medium">Teléfono</label>
-      <input type="tel" formControlName="phone" class="w-full p-3 border rounded-lg">
+      <input type="tel" formControlName="phone"
+             class="w-full p-3 border rounded-lg"
+             [ngClass]="{'border-red-500': campoInvalido('phone')}">
+      <small class="text-red-500" *ngIf="campoInvalido('phone')">Ingrese un número de teléfono válido (9-15 dígitos).</small>
     </div>
 
+    <!-- Número de Personas -->
+    <div class="mb-4">
+      <label class="block text-gray-700 font-medium">Número de Personas</label>
+      <input type="number" formControlName="npersonas"
+             class="w-full p-3 border rounded-lg"
+             [ngClass]="{'border-red-500': campoInvalido('npersonas')}">
+      <small class="text-red-500" *ngIf="campoInvalido('npersonas')">Debe ser al menos 1 persona.</small>
+    </div>
+
+    <!-- Fecha de Salida -->
     <div class="mb-4">
       <label class="block text-gray-700 font-medium">Fecha de Salida</label>
-      <select formControlName="fecha" class="w-full p-3 border rounded-lg">
+      <select formControlName="fecha"
+              class="w-full p-3 border rounded-lg"
+              [ngClass]="{'border-red-500': campoInvalido('fecha')}">
+        <option value="">Seleccione una fecha</option>
         <option>02 AL 06 DE MARZO</option>
         <option>06 AL 10 DE MARZO</option>
         <option>14 AL 18 DE MARZO</option>
         <option>30 DE MARZO AL 03 DE ABRIL</option>
         <option>06 AL 10 DE ABRIL</option>
       </select>
+      <small class="text-red-500" *ngIf="campoInvalido('fecha')">Seleccione una fecha.</small>
     </div>
 
-    <button type="submit" class="w-full bg-[#b21a1f] text-white py-3 rounded-lg font-semibold hover:bg-red-700 transition">
+    <!-- Botón de envío -->
+    <button type="submit"
+            class="w-full bg-[#b21a1f] text-white py-3 rounded-lg font-semibold hover:bg-red-700 transition"
+            [disabled]="contactForm.invalid">
       ¡Quiero mi viaje!
     </button>
+
   </form>
 </div>
 
