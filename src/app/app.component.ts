@@ -12,6 +12,7 @@ import {NgClass, NgIf} from '@angular/common';
 export class AppComponent {
   title = 'LandingForms';
   contactForm: FormGroup;
+  formSubmitted = false; // Estado para mostrar el mensaje de agradecimiento
   private scriptUrl = "https://script.google.com/macros/s/AKfycbwAo0wqHVv5XfA0xDKJB4eYXvmAWv80TCuzYd-0GSno3eg5F3IT7CllPPjC-CMZU87A/exec"; // Reemplaza con la URL de tu script de Google Apps Script
 
   constructor(private fb: FormBuilder, private http: HttpClient) {
@@ -28,10 +29,8 @@ export class AppComponent {
     if (this.contactForm.valid) {
       const formData = this.contactForm.value;
       console.log('Formulario enviado:', formData);
-
       // Cambia esta URL por la de tu Apps Script o API
       const url = this.scriptUrl;
-
       // Configurar los encabezados de la solicitud
       const headers = {
         'Content-Type': 'text/plain;charset=utf-8'
@@ -47,8 +46,8 @@ export class AppComponent {
         .then((response) => response.json()) // Parsear la respuesta
         .then((data) => {
           console.log('Datos enviados correctamente:', data);
-          alert('Formulario enviado correctamente.');
           this.contactForm.reset();
+          this.formSubmitted = true; // Cambia el estado para mostrar el mensaje
         })
         .catch((error) => {
           console.error('Error al enviar los datos:', error);
